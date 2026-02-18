@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden & Yaacov | 23.06.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            color: #4a4a4a;
+            overflow: hidden;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .main-container {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), 
+                        url('fond3.png'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px; /* Un peu moins de padding en haut pour laisser la place au logo */
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Logo Agrandit --- */
+        .logo {
+            width: 220px; /* Taille augmentée */
+            height: auto;
+            opacity: 1;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+            margin-top: 10px;
+        }
+
+        .names {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            color: #4a4a4a;
+            text-align: center;
+            line-height: 1;
+            margin-top: -10px;
+        }
+
+        .btn-invitation {
+            display: inline-block;
+            width: 230px; 
+            padding: 14px 0;
+            border: 0.8px solid #ad1457;
+            background-color: rgba(255, 255, 255, 0.6);
+            color: #ad1457;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            text-align: center;
+        }
+
+        .btn-invitation:hover {
+            background-color: #ad1457;
+            color: #fff;
+            letter-spacing: 7px;
+        }
+
+        .countdown-wrapper {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 0.5px solid rgba(173, 20, 87, 0.2);
+            padding-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .number {
+            display: block;
+            font-size: 1.8rem;
+            color: #7b1fa2;
+            font-weight: 300;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Optimisation Mobile */
+        @media (max-width: 480px) {
+            .logo { width: 180px; } /* Logo large sur mobile aussi */
+            .names { font-size: 3rem; }
+            .btn-invitation { width: 210px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <img src="logo4.png" alt="Logo Eden & Yaacov" class="logo">
+
+        <h1 class="names">Eden & Yaacov</h1>
+
+        <a href="#" class="btn-invitation">L'Invitation</a>
+
+        <div class="countdown-wrapper">
+            <div class="countdown-item">
+                <span class="number" id="days">00</span>
+                <span class="label">Jours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hrs</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Sec</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date("Jun 23, 2026 18:00:00").getTime();
+
+        function update() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.querySelector(".countdown-wrapper").innerHTML = "<p style='letter-spacing:3px; font-size:0.8rem;'>C'EST LE GRAND JOUR</p>";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+        }
+
+        setInterval(update, 1000);
+        update();
+    </script>
+
+</body>
+</html>
