@@ -11,17 +11,11 @@
     :root {
       --primary: #ad1457;
       --secondary: #7b1fa2;
-      --amber: #B8860B;
-      --soft-white: rgba(255, 255, 255, 0.92);
+      --soft-white: rgba(255, 255, 255, 0.95);
       --text-dark: #4a4a4a;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       background-color: #fff;
@@ -42,38 +36,8 @@
       z-index: -1;
     }
 
-    #musicToggle {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 999;
-      width: 50px;
-      height: 50px;
-      background: white;
-      border: 0.5px solid var(--primary);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    #musicToggle.playing {
-      background: var(--primary);
-      color: white;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
     header {
-      height: 40vh;
+      height: 30vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -82,35 +46,73 @@
       padding: 20px;
     }
 
-    .logo-main {
-      width: 180px;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05));
-      margin-bottom: 10px;
-    }
+    .logo-main { width: 150px; margin-bottom: 10px; }
 
     .names-title {
       font-family: 'Pinyon Script', cursive;
       font-size: 2.8rem;
       color: var(--text-dark);
-      margin-bottom: 15px;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto 40px;
-      padding: 0 15px;
-      position: relative;
-    }
+    .container { max-width: 650px; margin: 0 auto 40px; padding: 0 15px; }
 
     .wedding-card {
       background: var(--soft-white);
-      border-radius: 2px;
-      padding: 30px 20px;
+      border-radius: 8px;
       margin-bottom: 30px;
-      border: 0.5px solid rgba(173, 20, 87, 0.2);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border: 0.5px solid rgba(173, 20, 87, 0.15);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.03);
       text-align: center;
       backdrop-filter: blur(8px);
+      padding: 40px 0;
+    }
+
+    .houppa-img {
+      width: 90%;
+      max-width: 500px;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto 15px; /* Espace réduit pour rapprocher le titre */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .card-content {
+      padding: 0 25px;
+    }
+
+    .family-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      margin: 25px 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .family-left { font-style: italic; font-weight: 400; }
+
+    .announcement {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .couple-names {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .highlight {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 1.4rem;
+      display: block;
+      margin: 10px 0;
     }
 
     .card-type {
@@ -122,18 +124,10 @@
       margin-bottom: 15px;
     }
 
-    .highlight {
-      color: var(--secondary);
-      font-weight: 500;
-      font-size: 1.2rem;
-      display: block;
-      margin: 10px 0;
-    }
-
     .btn-outline {
       display: inline-block;
       margin: 10px 5px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: 0.8px solid var(--primary);
       color: var(--primary);
       text-decoration: none;
@@ -142,117 +136,36 @@
       letter-spacing: 2px;
       transition: 0.4s;
       font-family: 'Montserrat', sans-serif;
-      background: transparent;
+      background: white;
       cursor: pointer;
     }
 
     .btn-outline:hover { background: var(--primary); color: white; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 1s ease-out;
-    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: 1s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    .rsvp-form {
-      text-align: left;
-      margin-top: 20px;
-      font-family: 'Montserrat', sans-serif;
+    .petal { position: fixed; background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%); border-radius: 150% 0 150% 0; opacity: 0; pointer-events: none; z-index: 1000; }
+    @keyframes fall { 
+        0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.7; }
+        100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
     }
 
-    .form-group { margin-bottom: 15px; }
+    .back-home { position: fixed; top: 20px; left: 20px; z-index: 999; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 10px 14px; background: white; border: 0.8px solid var(--primary); color: var(--primary); }
 
-    label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      color: #666;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 0.5px solid #ccc;
-      border-radius: 0;
-      font-family: inherit;
-      font-size: 0.9rem;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 15px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-submit:hover { opacity: 0.9; }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-family: 'Pinyon Script', cursive;
-      font-size: 2rem;
-      color: var(--text-dark);
-    }
-
-    /* --- Petals --- */
-    .petal {
-      position: fixed;
-      background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%);
-      border-radius: 150% 0 150% 0;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.7; }
-      100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
-    }
-
-    /* --- Petit bouton retour --- */
-    .back-home {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 999;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.7);
-      border: 0.8px solid rgba(173, 20, 87, 0.35);
-      color: var(--primary);
-      backdrop-filter: blur(6px);
-      transition: 0.3s;
-    }
-
-    .back-home:hover {
-      background: var(--primary);
-      color: white;
+    @media (max-width: 480px) {
+      .family-grid { font-size: 0.85rem; }
+      .couple-names { font-size: 2.8rem; }
+      .names-title { font-size: 2.2rem; }
+      .houppa-img { width: 85%; }
     }
   </style>
 </head>
 
 <body>
   <div class="bg-fixed"></div>
-
-  <!-- ✅ RETOUR ACCUEIL -->
   <a href="index.html" class="back-home">← Accueil</a>
-
-  <button id="musicToggle">🎶</button>
-  <audio id="weddingMusic" src="musique.mp3" preload="auto" loop></audio>
 
   <header>
     <img src="logo4.png" alt="Logo E&Y" class="logo-main">
@@ -260,64 +173,80 @@
   </header>
 
   <div class="container">
+    
     <div class="wedding-card reveal">
-      <p class="card-type">Cérémonie Civile</p>
-      <h2 style="font-weight: 300;">La Mairie</h2>
-      <span class="highlight">Mardi 23 Juin 2026</span>
-      <p>À la Mairie de votre ville<br>Cérémonie à <strong>14h00</strong></p>
-      <div style="margin-top: 15px;">
+      <div class="card-content">
+        <p class="card-type">Cérémonie Civile</p>
+        <h2 style="font-weight: 300;">La Mairie</h2>
+        <span class="highlight">Mardi 23 Juin 2026</span>
+        <p>Cérémonie à <strong>14h00</strong></p>
         <a href="#" class="btn-outline">Waze</a>
-        <button type="button" onclick="addToCalendar('mairie')" class="btn-outline">Calendrier</button>
       </div>
     </div>
 
     <div class="wedding-card reveal">
-      <p class="card-type">Cérémonie Religieuse</p>
-      <h2 style="font-weight: 300;">La Houppa</h2>
-      <span class="highlight">Mardi 23 Juin 2026</span>
-      <p>Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
-      <div style="margin-top: 15px;">
-        <a href="#" class="btn-outline">Waze</a>
-        <button type="button" onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
+      
+      <img src="houppa7.png" alt="Photo de la Houppa" class="houppa-img">
+      
+      <h2 style="font-weight: 300; margin-bottom: 25px;">Houppa</h2>
+
+      <div class="card-content">
+        <div class="family-grid">
+          <div class="family-left">
+            Nicole et Freddy Elharrar<br>
+            David et Eliane Elharrar<br>
+            Raphaël Levy
+          </div>
+          <div class="family-right"></div>
+        </div>
+
+        <p class="announcement">
+          ont la joie de vous faire part du mariage de leurs enfants et petits-enfants
+        </p>
+
+        <div class="couple-names">Eden & Yaacov</div>
+
+        <p class="announcement">
+          Et seront honorés de votre présence à la cérémonie religieuse qui aura lieu
+        </p>
+
+        <span class="highlight">Le Mardi 23 Juin 2026</span>
+        <p>Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
+
+        <div style="margin-top: 30px;">
+          <a href="#" class="btn-outline">Waze</a>
+          <button type="button" onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
+        </div>
       </div>
     </div>
 
     <div class="wedding-card reveal">
-      <p class="card-type">Confirmation</p>
-
-      <form id="rsvpForm" class="rsvp-form">
-        <div class="form-group">
-          <label>Nom & Prénom</label>
-          <input type="text" name="nom" required placeholder="Votre nom">
-        </div>
-
-        <div class="form-group">
-          <label>Serez-vous présent ?</label>
-          <select name="presence" required>
-            <option value="oui">OUI, avec plaisir</option>
-            <option value="non">NON, avec regret</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Nombre de personnes (Adultes)</label>
-          <input type="number" name="adultes" min="1" value="1">
-        </div>
-
-        <div class="form-group">
-          <label>Un message pour nous ?</label>
-          <textarea name="message" rows="3"></textarea>
-        </div>
-
-        <button type="submit" id="submitBtn" class="btn-submit">Confirmer</button>
-      </form>
+      <div class="card-content">
+        <p class="card-type">Confirmation</p>
+        <form id="rsvpForm" style="text-align: left; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
+          <div style="margin-bottom: 15px;">
+            <label style="display:block; font-size: 0.7rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase;">Nom & Prénom</label>
+            <input type="text" name="nom" required style="width:100%; padding:12px; border:0.5px solid #ccc;">
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label style="display:block; font-size: 0.7rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase;">Presence</label>
+            <select name="presence" style="width:100%; padding:12px; border:0.5px solid #ccc;">
+              <option value="oui">OUI, avec plaisir</option>
+              <option value="non">NON, avec regret</option>
+            </select>
+          </div>
+          <button type="submit" style="width: 100%; padding: 15px; background: var(--primary); color: white; border: none; text-transform: uppercase; letter-spacing: 3px; cursor: pointer;">Confirmer</button>
+        </form>
+      </div>
     </div>
+
   </div>
 
-  <footer>Hâte de vous retrouver</footer>
+  <footer style="text-align: center; padding: 40px; font-family: 'Pinyon Script', cursive; font-size: 2rem;">
+    Hâte de vous retrouver
+  </footer>
 
   <script>
-    // Reveal on scroll
     function reveal() {
       document.querySelectorAll(".reveal").forEach(el => {
         if (el.getBoundingClientRect().top < window.innerHeight - 50) {
@@ -328,48 +257,21 @@
     window.addEventListener("scroll", reveal);
     reveal();
 
-    // Music
-    const audio = document.getElementById('weddingMusic');
-    const btn = document.getElementById('musicToggle');
-
-    btn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        btn.innerText = "💖";
-        btn.classList.add('playing');
-      } else {
-        audio.pause();
-        btn.innerText = "🎶";
-        btn.classList.remove('playing');
-      }
-    });
-
-    // Petals
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
-
       petal.style.left = Math.random() * window.innerWidth + 'px';
-
       const size = Math.random() * 10 + 10;
       petal.style.width = size + 'px';
       petal.style.height = size + 'px';
-
       petal.style.animation = `fall ${Math.random() * 5 + 5}s linear forwards`;
-
       document.body.appendChild(petal);
       setTimeout(() => petal.remove(), 10000);
     }
     setInterval(createPetal, 600);
 
-    // RSVP (demo)
-    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert("Merci pour votre réponse !");
-    });
-
     function addToCalendar(type) {
-      alert("Action : Ajouter " + type + " au calendrier");
+      alert("Ajout au calendrier pour la " + type);
     }
   </script>
 </body>
