@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Invitation | Eden & Yaacov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ad1457; /* Rose foncé du bouton d'accueil */
+            --secondary: #7b1fa2; /* Violet du compte à rebours */
+            --amber: #B8860B;
+            --soft-white: rgba(255, 255, 255, 0.92);
+            --text-dark: #4a4a4a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* --- Fond identique à l'accueil --- */
+        .bg-fixed {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('fond3.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        #musicToggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 0.5px solid var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        #musicToggle.playing { background: var(--primary); color: white; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-main { width: 180px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05)); margin-bottom: 10px; }
+
+        .container { max-width: 600px; margin: 0 auto 40px; padding: 0 15px; position: relative; }
+
+        .wedding-card {
+            background: var(--soft-white);
+            border-radius: 2px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            border: 0.5px solid rgba(173, 20, 87, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .names-title { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: var(--text-dark); margin-bottom: 15px; }
+        .card-type { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--primary); margin-bottom: 15px; }
+        .highlight { color: var(--secondary); font-weight: 500; font-size: 1.2rem; display: block; margin: 10px 0; }
+
+        .btn-outline {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            border: 0.8px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        /* RSVP Form */
+        .rsvp-form { text-align: left; margin-top: 20px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.7rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; color: #666; }
+        input, select, textarea { width: 100%; padding: 10px; border: 0.5px solid #ccc; border-radius: 0; font-family: inherit; font-size: 0.9rem; }
+
+        .btn-submit {
+            width: 100%; padding: 15px; background: var(--primary); color: white; border: none;
+            text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: 0.3s;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .petal { position: fixed; background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%); border-radius: 150% 0 150% 0; opacity: 0; pointer-events: none; z-index: 1000; }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.7; } 100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; } }
+
+        footer { text-align: center; padding: 40px; font-family: 'Pinyon Script', cursive; font-size: 2rem; color: var(--text-dark); }
+    </style>
+</head>
+<body>
+
+<div class="bg-fixed"></div>
+<button id="musicToggle">🎶</button>
+<audio id="weddingMusic" src="musique.mp3" preload="auto" loop></audio>
+
+<header>
+    <img src="logo4.png" alt="Logo E&Y" class="logo-main">
+    <h1 class="names-title">Eden & Yaacov</h1>
+</header>
+
+<div class="container">
+    <div class="wedding-card reveal">
+        <p class="card-type">Cérémonie Civile</p>
+        <h2 style="font-weight: 300;">La Mairie</h2>
+        <span class="highlight">Mardi 23 Juin 2026</span>
+        <p>À la Mairie de votre ville<br>Cérémonie à <strong>14h00</strong></p>
+        <div style="margin-top: 15px;">
+            <a href="#" class="btn-outline">Waze</a>
+            <button onclick="addToCalendar('mairie')" class="btn-outline">Calendrier</button>
+        </div>
+    </div>
+
+    <div class="wedding-card reveal">
+        <p class="card-type">Cérémonie Religieuse</p>
+        <h2 style="font-weight: 300;">La Houppa</h2>
+        <span class="highlight">Mardi 23 Juin 2026</span>
+        <p>Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
+        <div style="margin-top: 15px;">
+            <a href="#" class="btn-outline">Waze</a>
+            <button onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
+        </div>
+    </div>
+
+    <div class="wedding-card reveal">
+        <p class="card-type">Confirmation</p>
+        <form id="rsvpForm" class="rsvp-form">
+            <div class="form-group">
+                <label>Nom & Prénom</label>
+                <input type="text" name="nom" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+                <label>Serez-vous présent ?</label>
+                <select name="presence" required>
+                    <option value="oui">OUI, avec plaisir</option>
+                    <option value="non">NON, avec regret</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nombre de personnes (Adultes)</label>
+                <input type="number" name="adultes" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label>Un message pour nous ?</label>
+                <textarea name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="btn-submit">Confirmer</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    Hâte de vous retrouver
+</footer>
+
+<script>
+    // Animation au scroll
+    function reveal() {
+        document.querySelectorAll(".reveal").forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("active");
+        });
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    // Musique
+    const audio = document.getElementById('weddingMusic');
+    const btn = document.getElementById('musicToggle');
+    btn.addEventListener('click', () => {
+        if (audio.paused) { audio.play(); btn.innerText = "💖"; btn.classList.add('playing'); }
+        else { audio.pause(); btn.innerText = "🎶"; btn.classList.remove('playing'); }
+    });
+
+    // Pétales
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * window.innerWidth + 'px';
+        petal.style.width = Math.random() * 10 + 10 + 'px';
+        petal.style.height = petal.style.width;
+        petal.style.animation = `fall ${Math.random() * 5 + 5}s linear forwards`;
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 10000);
+    }
+    setInterval(createPetal, 600);
+
+    // RSVP (Logique simplifiée pour l'exemple)
+    document.getElementById('rsvpForm').onsubmit = (e) => {
+        e.preventDefault();
+        alert("Merci pour votre réponse !");
+    };
+
+    function addToCalendar(type) {
+        alert("Action : Ajouter " + type + " au calendrier");
+    }
+</script>
+</body>
+</html>
