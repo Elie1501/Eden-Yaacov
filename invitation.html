@@ -1,278 +1,392 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Invitation | Eden & Yaacov</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Invitation | Eden & Yaacov</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #ad1457;
-      --secondary: #7b1fa2;
-      --soft-white: rgba(255, 255, 255, 0.95);
-      --text-dark: #4a4a4a;
-    }
+    <style>
+        :root {
+            --primary: #ad1457;
+            --secondary: #7b1fa2;
+            --soft-white: rgba(255, 255, 255, 0.95);
+            --text-dark: #4a4a4a;
+            --accent-light: rgba(173, 20, 87, 0.1);
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    body {
-      background-color: #fff;
-      color: var(--text-dark);
-      font-family: 'Cormorant Garamond', serif;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
 
-    .bg-fixed {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-                  url('fond3.png');
-      background-size: cover;
-      background-position: center;
-      z-index: -1;
-    }
+        .bg-fixed {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+            url('fond3.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
 
-    header {
-      height: 30vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
+        header {
+            height: 35vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .logo-main { width: 150px; margin-bottom: 10px; }
+        .logo-main { width: 140px; margin-bottom: 10px; }
 
-    .names-title {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 2.8rem;
-      color: var(--text-dark);
-    }
+        .names-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3rem;
+            color: var(--text-dark);
+        }
 
-    .container { max-width: 650px; margin: 0 auto 40px; padding: 0 15px; }
+        .container { max-width: 650px; margin: 0 auto 40px; padding: 0 15px; }
 
-    .wedding-card {
-      background: var(--soft-white);
-      border-radius: 8px;
-      margin-bottom: 30px;
-      border: 0.5px solid rgba(173, 20, 87, 0.15);
-      box-shadow: 0 15px 45px rgba(0,0,0,0.03);
-      text-align: center;
-      backdrop-filter: blur(8px);
-      padding: 40px 0;
-    }
+        .wedding-card {
+            background: var(--soft-white);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 0.5px solid rgba(173, 20, 87, 0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            padding: 45px 0;
+            overflow: hidden;
+        }
 
-    .houppa-img {
-      width: 90%;
-      max-width: 500px;
-      height: auto;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      border-radius: 4px;
-      display: block;
-      margin: 0 auto 15px; /* Espace réduit pour rapprocher le titre */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
+        .card-img {
+            width: 92%;
+            max-width: 520px;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
 
-    .card-content {
-      padding: 0 25px;
-    }
+        .card-content { padding: 0 30px; }
 
-    .family-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      text-align: left;
-      margin: 25px 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+        .card-type {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
 
-    .family-left { font-style: italic; font-weight: 400; }
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.5rem;
+            display: block;
+            margin: 15px 0;
+        }
 
-    .announcement {
-      margin: 20px 0;
-      font-size: 1.1rem;
-      font-style: italic;
-    }
+        .couple-names {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.8rem;
+            color: var(--primary);
+            margin: 15px 0;
+        }
 
-    .couple-names {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 3.5rem;
-      color: var(--primary);
-      margin: 10px 0;
-    }
+        .family-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: left;
+            margin: 20px 0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
 
-    .highlight {
-      color: var(--secondary);
-      font-weight: 600;
-      font-size: 1.4rem;
-      display: block;
-      margin: 10px 0;
-    }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
 
-    .card-type {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
+        .btn-outline, .btn-submit {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 0.8px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+            cursor: pointer;
+            min-width: 130px;
+            text-align: center;
+        }
 
-    .btn-outline {
-      display: inline-block;
-      margin: 10px 5px;
-      padding: 12px 25px;
-      border: 0.8px solid var(--primary);
-      color: var(--primary);
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      transition: 0.4s;
-      font-family: 'Montserrat', sans-serif;
-      background: white;
-      cursor: pointer;
-    }
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            margin-top: 10px;
+        }
 
-    .btn-outline:hover { background: var(--primary); color: white; }
+        .btn-outline:hover, .btn-submit:hover:not(:disabled) {
+            background: var(--primary);
+            color: white;
+        }
 
-    .reveal { opacity: 0; transform: translateY(20px); transition: 1s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+        .btn-submit:disabled {
+            background: #ccc;
+            border-color: #ccc;
+            cursor: not-allowed;
+        }
 
-    .petal { position: fixed; background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%); border-radius: 150% 0 150% 0; opacity: 0; pointer-events: none; z-index: 1000; }
-    @keyframes fall { 
-        0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.7; }
-        100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
-    }
+        .memoire-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--accent-light);
+        }
 
-    .back-home { position: fixed; top: 20px; left: 20px; z-index: 999; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 10px 14px; background: white; border: 0.8px solid var(--primary); color: var(--primary); }
+        .rsvp-form-container { text-align: left; font-family: 'Montserrat', sans-serif; }
+        .input-group { margin-bottom: 20px; }
+        .input-label { display: block; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; color: var(--primary); }
+        .styled-input, .styled-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
 
-    @media (max-width: 480px) {
-      .family-grid { font-size: 0.85rem; }
-      .couple-names { font-size: 2.8rem; }
-      .names-title { font-size: 2.2rem; }
-      .houppa-img { width: 85%; }
-    }
-  </style>
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .petal { position: fixed; background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%); border-radius: 150% 0 150% 0; opacity: 0; pointer-events: none; z-index: 1000; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .couple-names { font-size: 3rem; }
+            .action-buttons { flex-direction: column; align-items: center; gap: 10px; }
+            .btn-outline { width: 100%; }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="bg-fixed"></div>
-  <a href="index.html" class="back-home">← Accueil</a>
+<div class="bg-fixed"></div>
 
-  <header>
-    <img src="logo4.png" alt="Logo E&Y" class="logo-main">
+<header>
+    <img src="logo4.png" alt="E&Y" class="logo-main">
     <h1 class="names-title">Eden & Yaacov</h1>
-  </header>
+</header>
 
-  <div class="container">
-    
-    <div class="wedding-card reveal">
-      <div class="card-content">
-        <p class="card-type">Cérémonie Civile</p>
-        <h2 style="font-weight: 300;">La Mairie</h2>
-        <span class="highlight">Mardi 23 Juin 2026</span>
-        <p>Cérémonie à <strong>14h00</strong></p>
-        <a href="#" class="btn-outline">Waze</a>
-      </div>
-    </div>
+<div class="container">
 
     <div class="wedding-card reveal">
-      
-      <img src="houppa7.png" alt="Photo de la Houppa" class="houppa-img">
-      
-      <h2 style="font-weight: 300; margin-bottom: 25px;">Houppa</h2>
-
-      <div class="card-content">
-        <div class="family-grid">
-          <div class="family-left">
-            Nicole et Freddy Elharrar<br>
-            David et Eliane Elharrar<br>
-            Raphaël Levy
-          </div>
-          <div class="family-right"></div>
+        <img src="mairie.png" alt="La Mairie" class="card-img">
+        <div class="card-content">
+            <p class="card-type">Cérémonie Civile</p>
+            <h2 style="font-weight: 300; font-size: 1.8rem;">La Mairie</h2>
+            <span class="highlight">Mardi 17 Juin 2026</span>
+            <p style="font-size: 1.1rem; letter-spacing: 1px;">Cérémonie à <strong>13h30</strong></p>
+            <div class="action-buttons">
+                <a href="https://waze.com" class="btn-outline" target="_blank" rel="noopener">Waze</a>
+                <button onclick="addToCalendar('mairie')" class="btn-outline">Calendrier</button>
+            </div>
         </div>
-
-        <p class="announcement">
-          ont la joie de vous faire part du mariage de leurs enfants et petits-enfants
-        </p>
-
-        <div class="couple-names">Eden & Yaacov</div>
-
-        <p class="announcement">
-          Et seront honorés de votre présence à la cérémonie religieuse qui aura lieu
-        </p>
-
-        <span class="highlight">Le Mardi 23 Juin 2026</span>
-        <p>Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
-
-        <div style="margin-top: 30px;">
-          <a href="#" class="btn-outline">Waze</a>
-          <button type="button" onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
-        </div>
-      </div>
     </div>
 
     <div class="wedding-card reveal">
-      <div class="card-content">
-        <p class="card-type">Confirmation</p>
-        <form id="rsvpForm" style="text-align: left; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
-          <div style="margin-bottom: 15px;">
-            <label style="display:block; font-size: 0.7rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase;">Nom & Prénom</label>
-            <input type="text" name="nom" required style="width:100%; padding:12px; border:0.5px solid #ccc;">
-          </div>
-          <div style="margin-bottom: 15px;">
-            <label style="display:block; font-size: 0.7rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase;">Presence</label>
-            <select name="presence" style="width:100%; padding:12px; border:0.5px solid #ccc;">
-              <option value="oui">OUI, avec plaisir</option>
-              <option value="non">NON, avec regret</option>
-            </select>
-          </div>
-          <button type="submit" style="width: 100%; padding: 15px; background: var(--primary); color: white; border: none; text-transform: uppercase; letter-spacing: 3px; cursor: pointer;">Confirmer</button>
-        </form>
-      </div>
+        <img src="houppa7.png" alt="Houppa" class="card-img">
+        <div class="card-content">
+            <p class="card-type">Cérémonie Religieuse</p>
+            <h2 style="font-weight: 300; font-size: 1.8rem;">La Houppa</h2>
+
+            <div class="family-grid">
+                <div style="font-style: italic;">Famille Levy</div>
+                <div style="text-align: right; font-style: italic;">Famille Trabelsi</div>
+            </div>
+
+            <p style="font-style: italic; font-size: 1.1rem;">ont la joie de vous faire part du mariage de leurs enfants</p>
+            <div class="couple-names">Eden & Yaacov</div>
+            <p style="font-style: italic; font-size: 1.1rem;">et seront honorés de votre présence</p>
+
+            <span class="highlight">Le Mardi 23 Juin 2026</span>
+            <p style="font-size: 1.1rem;">Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
+
+            <div class="action-buttons">
+                <a href="https://waze.com" class="btn-outline" target="_blank" rel="noopener">Waze</a>
+                <button onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
+            </div>
+
+            <div class="memoire-section">
+                <p style="font-style: italic; margin-bottom: 15px; color: var(--primary);">À la mémoire de nos chers disparus</p>
+                <div class="family-grid" style="font-size: 0.85rem; line-height: 1.4;">
+                    <div>
+                        <strong>David et Eliane Elharrar</strong><br>
+                        Raphaël Levy et Marcel Levy
+                    </div>
+                    <div style="text-align: right;">
+                        <strong>Borkana et Elihou</strong><br>
+                        Zoraya et Khamous Trabelsi
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-  </div>
+    <div class="wedding-card reveal">
+        <div class="card-content">
+            <p class="card-type">R.S.V.P</p>
+            <h2 style="font-weight: 300; margin-bottom: 5px;">Confirmation</h2>
+            <p style="font-size: 0.85rem; font-style: italic; margin-bottom: 25px;">Merci de répondre avant le 15 Mai 2026</p>
 
-  <footer style="text-align: center; padding: 40px; font-family: 'Pinyon Script', cursive; font-size: 2rem;">
-    Hâte de vous retrouver
-  </footer>
+            <div id="formFeedback" style="display: none; text-align: center; padding: 30px; font-family: 'Pinyon Script', cursive; font-size: 2.2rem; color: var(--primary);">
+                Merci ! Votre réponse a bien été envoyée.
+            </div>
 
-  <script>
+            <form id="rsvpForm" action="https://formspree.io/f/mqaevepk" method="POST" class="rsvp-form-container">
+                <div class="input-group">
+                    <label class="input-label">Nom & Prénom</label>
+                    <input type="text" name="nom" placeholder="Ex: Famille Levy" required class="styled-input">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Votre présence</label>
+                    <select name="presence" id="presenceSelect" required class="styled-select">
+                        <option value="oui">OUI, nous serons là avec joie</option>
+                        <option value="non">NON, nous ne pourrons pas être là</option>
+                    </select>
+                </div>
+
+                <div class="input-group" id="guestCountGroup">
+                    <label class="input-label">Nombre de personnes (Adultes)</label>
+                    <select name="adultes" class="styled-select">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Un message pour les mariés ?</label>
+                    <textarea name="message" rows="3" class="styled-input" style="resize: none; font-family: inherit;" placeholder="Vos vœux de bonheur..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-submit">Confirmer ma présence</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<footer style="text-align: center; padding: 60px 20px; font-family: 'Pinyon Script', cursive; font-size: 2.2rem;">
+    Hâte de partager ce moment avec vous
+</footer>
+
+<script>
     function reveal() {
-      document.querySelectorAll(".reveal").forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
-          el.classList.add("active");
-        }
-      });
+        document.querySelectorAll(".reveal").forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
+        });
     }
     window.addEventListener("scroll", reveal);
-    reveal();
+    window.addEventListener("load", reveal);
 
     function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = Math.random() * window.innerWidth + 'px';
-      const size = Math.random() * 10 + 10;
-      petal.style.width = size + 'px';
-      petal.style.height = size + 'px';
-      petal.style.animation = `fall ${Math.random() * 5 + 5}s linear forwards`;
-      document.body.appendChild(petal);
-      setTimeout(() => petal.remove(), 10000);
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * window.innerWidth + 'px';
+        const size = Math.random() * 10 + 10;
+        petal.style.width = size + 'px';
+        petal.style.height = size + 'px';
+        const duration = Math.random() * 5 + 5;
+        petal.style.animation = `fall ${duration}s linear forwards`;
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), duration * 1000);
     }
-    setInterval(createPetal, 600);
+    setInterval(createPetal, 800);
+
+    const presenceSelect = document.getElementById('presenceSelect');
+    const guestGroup = document.getElementById('guestCountGroup');
+    presenceSelect.addEventListener('change', function() {
+        guestGroup.style.display = (this.value === 'non') ? 'none' : 'block';
+    });
+
+    const form = document.getElementById('rsvpForm');
+    const feedback = document.getElementById('formFeedback');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Envoi en cours...";
+
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.style.display = 'none';
+            feedback.style.display = 'block';
+            for(let i=0; i<15; i++) setTimeout(createPetal, i * 100);
+        } else {
+            alert("Une erreur est survenue. Veuillez réessayer.");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Confirmer ma présence";
+        }
+    });
 
     function addToCalendar(type) {
-      alert("Ajout au calendrier pour la " + type);
+        let event = {};
+        if(type === 'mairie') {
+            event = {
+                title: "Mariage Eden & Yaacov - Mairie",
+                start: "20260617T133000",
+                end: "20260617T150000",
+                location: "La Mairie"
+            };
+        } else {
+            event = {
+                title: "Mariage Eden & Yaacov - Houppa",
+                start: "20260623T180000",
+                end: "20260624T040000",
+                location: "Domaine de l'Honneur"
+            };
+        }
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}`;
+        window.open(url, '_blank', 'noopener');
     }
-  </script>
+</script>
+
 </body>
 </html>
