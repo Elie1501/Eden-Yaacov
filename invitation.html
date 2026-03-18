@@ -10,10 +10,10 @@
     <style>
         :root {
             --primary: #ad1457;
-            --secondary: #7b1fa2;
-            --soft-white: rgba(255, 255, 255, 0.95);
             --text-dark: #4a4a4a;
+            --soft-white: rgba(255, 255, 255, 0.95);
             --accent-light: rgba(173, 20, 87, 0.1);
+            --soft-pink: #fff0f3;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -30,8 +30,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-            url('fond3.png');
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('fond3.png');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -48,12 +47,6 @@
         }
 
         .logo-main { width: 140px; margin-bottom: 10px; }
-
-        .names-title {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3rem;
-            color: var(--text-dark);
-        }
 
         .container { max-width: 650px; margin: 0 auto 40px; padding: 0 15px; }
 
@@ -94,18 +87,43 @@
         }
 
         .highlight {
-            color: var(--secondary);
+            color: var(--primary);
             font-weight: 600;
             font-size: 1.5rem;
             display: block;
             margin: 15px 0;
         }
 
-        .couple-names {
+        .couple-names-style {
             font-family: 'Pinyon Script', cursive;
             font-size: 3.8rem;
             color: var(--primary);
+            display: block;
             margin: 15px 0;
+        }
+
+        .mairie-oui {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            display: block;
+            text-transform: uppercase;
+            margin: -5px 0 25px 0;
+            letter-spacing: 8px;
+            font-weight: 300;
+            font-variant: small-caps;
+            line-height: 1.2;
+        }
+
+        .oui-style {
+            font-family: 'Pinyon Script', cursive;
+            text-transform: none;
+            font-variant: normal;
+            letter-spacing: normal;
+            font-size: 2.8rem;
+            color: var(--primary);
+            display: inline-block;
+            margin-top: 5px;
         }
 
         .family-grid {
@@ -115,6 +133,27 @@
             margin: 20px 0;
             font-size: 1rem;
             line-height: 1.7;
+        }
+
+        .tsniout-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-top: 0.5px solid #eee;
+            background-color: var(--soft-pink);
+            border-radius: 8px;
+        }
+
+        /* Nouveau style pour l'image hébraïque */
+        .hebrew-divider {
+            max-width: 250px;
+            margin: 0 auto 25px;
+            display: block;
+        }
+
+        /* Filtre violet-rose duo-tone */
+        .colored-filter {
+            filter: drop-shadow(0 0 0 var(--primary)) drop-shadow(0 0 0 var(--primary)) drop-shadow(0 0 0 var(--primary));
+            opacity: 0.9;
         }
 
         .action-buttons {
@@ -154,18 +193,6 @@
             color: white;
         }
 
-        .btn-submit:disabled {
-            background: #ccc;
-            border-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .memoire-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--accent-light);
-        }
-
         .rsvp-form-container { text-align: left; font-family: 'Montserrat', sans-serif; }
         .input-group { margin-bottom: 20px; }
         .input-label { display: block; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; color: var(--primary); }
@@ -176,6 +203,7 @@
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
+            color: var(--text-dark);
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s ease; }
@@ -189,9 +217,12 @@
         }
 
         @media (max-width: 480px) {
-            .couple-names { font-size: 3rem; }
+            .couple-names-style { font-size: 3rem; }
+            .mairie-oui { font-size: 1.1rem; letter-spacing: 5px; }
+            .oui-style { font-size: 2.4rem; }
             .action-buttons { flex-direction: column; align-items: center; gap: 10px; }
             .btn-outline { width: 100%; }
+            .hebrew-divider { max-width: 320px; }
         }
     </style>
 </head>
@@ -201,7 +232,7 @@
 
 <header>
     <img src="logo4.png" alt="E&Y" class="logo-main">
-    <h1 class="names-title">Eden & Yaacov</h1>
+    <h1 style="font-family: 'Pinyon Script', cursive; font-size: 3rem; color: var(--text-dark);">Eden & Yaacov</h1>
 </header>
 
 <div class="container">
@@ -211,10 +242,16 @@
         <div class="card-content">
             <p class="card-type">Cérémonie Civile</p>
             <h2 style="font-weight: 300; font-size: 1.8rem;">La Mairie</h2>
-            <span class="highlight">Mercredi 17 Juin 2026</span>
+            <p style="font-size: 1rem; margin-bottom: 5px; opacity: 0.8;">Place de l'Hôtel de Ville, 75004 Paris</p>
+
+            <span class="couple-names-style">Eden & Yaacov</span>
+            <span class="mairie-oui">se diront<br><span class="oui-style">« Oui »</span></span>
+
+            <span class="highlight">Le Mardi 17 Juin 2026</span>
             <p style="font-size: 1.1rem; letter-spacing: 1px;">Cérémonie à <strong>13h30</strong></p>
+
             <div class="action-buttons">
-                <a href="https://waze.com" class="btn-outline" target="_blank" rel="noopener">Waze</a>
+                <a href="https://waze.com/ul?q=Mairie+de+Paris" class="btn-outline" target="_blank" rel="noopener">Waze</a>
                 <button onclick="addToCalendar('mairie')" class="btn-outline">Calendrier</button>
             </div>
         </div>
@@ -222,39 +259,34 @@
 
     <div class="wedding-card reveal">
         <img src="houppa7.png" alt="Houppa" class="card-img">
+
+        <img src="hebreu.png" alt="בסימן טוב" class="hebrew-divider colored-filter">
+
         <div class="card-content">
             <p class="card-type">Cérémonie Religieuse</p>
             <h2 style="font-weight: 300; font-size: 1.8rem;">La Houppa</h2>
 
             <div class="family-grid">
-                <div style="font-style: italic;">Famille Elharrar</div>
-                <div style="text-align: right; font-style: italic;">Famille Trabelsi</div>
+                <div style="font-style: italic;">M. et Mme Elharrar</div>
+                <div style="text-align: right; font-style: italic;">M. et Mme Trabelsi</div>
             </div>
 
             <p style="font-style: italic; font-size: 1.1rem;">ont la joie de vous faire part du mariage de leurs enfants</p>
-            <div class="couple-names">Eden & Yaacov</div>
+            <span class="couple-names-style">Eden & Yaacov</span>
             <p style="font-style: italic; font-size: 1.1rem;">et seront honorés de votre présence</p>
 
             <span class="highlight">Le Mardi 23 Juin 2026</span>
-            <p style="font-size: 1.1rem;">Au Domaine de l'Honneur<br>Accueil à <strong>18h00</strong></p>
+            <p style="font-size: 1.1rem;"><strong>Au Domaine de l'Honneur</strong><br>
+                123 Chemin des Roses, 77000 Melun<br>
+                Accueil à <strong>18h00</strong></p>
 
             <div class="action-buttons">
-                <a href="https://waze.com" class="btn-outline" target="_blank" rel="noopener">Waze</a>
+                <a href="https://waze.com/ul?q=Domaine+de+l+Honneur" class="btn-outline" target="_blank" rel="noopener">Waze</a>
                 <button onclick="addToCalendar('houppa')" class="btn-outline">Calendrier</button>
             </div>
 
-            <div class="memoire-section">
-                <p style="font-style: italic; margin-bottom: 15px; color: var(--primary);">À la mémoire de nos chers disparus</p>
-                <div class="family-grid" style="font-size: 0.85rem; line-height: 1.4;">
-                    <div>
-                        <strong>David et Eliane Elharrar</strong><br>
-                        Raphaël Levy et Marcel Levy
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>Borkana et Elihou</strong><br>
-                        Zoraya et Khamous Trabelsi
-                    </div>
-                </div>
+            <div class="tsniout-box">
+                <p style="font-style: italic; font-size: 0.9rem; color: var(--primary); font-weight: 600;">"Une tenue Tsniout réjouira les mariés"</p>
             </div>
         </div>
     </div>
@@ -277,8 +309,8 @@
 
                 <div class="input-group">
                     <label class="input-label">Votre présence</label>
-                    <select name="presence" id="presenceSelect" required class="styled-select">
-                        <option value="oui">OUI, nous serons là avec joie</option>
+                    <select name="presence" id="presenceSelect" required class="styled-select" style="border: 1px solid var(--primary);">
+                        <option value="oui">Oui, nous serons présents</option>
                         <option value="non">NON, nous ne pourrons pas être là</option>
                     </select>
                 </div>
@@ -306,10 +338,6 @@
 
 </div>
 
-<footer style="text-align: center; padding: 60px 20px; font-family: 'Pinyon Script', cursive; font-size: 2.2rem;">
-    Hâte de partager ce moment avec vous
-</footer>
-
 <script>
     function reveal() {
         document.querySelectorAll(".reveal").forEach(el => {
@@ -323,7 +351,7 @@
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.style.left = Math.random() * window.innerWidth + 'px';
-        const size = Math.random() * 10 + 10;
+        const size = Math.random() * 8 + 6;
         petal.style.width = size + 'px';
         petal.style.height = size + 'px';
         const duration = Math.random() * 5 + 5;
@@ -331,7 +359,7 @@
         document.body.appendChild(petal);
         setTimeout(() => petal.remove(), duration * 1000);
     }
-    setInterval(createPetal, 800);
+    setInterval(createPetal, 1200);
 
     const presenceSelect = document.getElementById('presenceSelect');
     const guestGroup = document.getElementById('guestCountGroup');
@@ -369,19 +397,9 @@
     function addToCalendar(type) {
         let event = {};
         if(type === 'mairie') {
-            event = {
-                title: "Mariage Eden & Yaacov - Mairie",
-                start: "20260617T133000",
-                end: "20260617T150000",
-                location: "La Mairie"
-            };
+            event = { title: "Mariage Eden & Yaacov - Mairie", start: "20260617T133000", end: "20260617T150000", location: "Mairie de Paris" };
         } else {
-            event = {
-                title: "Mariage Eden & Yaacov - Houppa",
-                start: "20260623T180000",
-                end: "20260624T040000",
-                location: "Domaine de l'Honneur"
-            };
+            event = { title: "Mariage Eden & Yaacov - Houppa", start: "20260623T180000", end: "20260624T040000", location: "Domaine de l'Honneur" };
         }
         const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}`;
         window.open(url, '_blank', 'noopener');
