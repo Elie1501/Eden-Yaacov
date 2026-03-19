@@ -92,7 +92,6 @@
             margin: 15px 0;
         }
 
-        /* TAILLE RESTAURÉE ICI */
         .couple-names-style {
             font-family: 'Pinyon Script', cursive;
             font-size: 3.8rem;
@@ -154,15 +153,14 @@
             display: block;
         }
 
-        /* Nouveau style pour le בס"ד */
         .bsd-style {
-            font-family: serif; /* Police simple pour le בס"ד */
+            font-family: serif;
             font-size: 0.8rem;
             color: var(--text-dark);
             opacity: 0.7;
             text-align: right;
-            padding-right: 4%; /* Alignement avec le bord de l'image en dessous */
-            margin-bottom: -10px; /* Rapproche du diviseur */
+            padding-right: 4%;
+            margin-bottom: -10px;
             display: block;
         }
 
@@ -203,14 +201,6 @@
             margin-top: 10px;
         }
 
-        .btn-outline:hover, .btn-submit:hover:not(:disabled) {
-            background: var(--primary);
-            color: white;
-        }
-
-        .rsvp-form-container { text-align: left; font-family: 'Montserrat', sans-serif; }
-        .input-group { margin-bottom: 20px; }
-        .input-label { display: block; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; color: var(--primary); }
         .styled-input, .styled-select {
             width: 100%;
             padding: 12px;
@@ -232,13 +222,13 @@
         }
 
         @media (max-width: 480px) {
-            .couple-names-style { font-size: 3rem; } /* Taille mobile préservée */
+            .couple-names-style { font-size: 3rem; }
+            .ampersand-center { text-align: center; display: block; width: 100%; }
             .mairie-oui { font-size: 1.1rem; letter-spacing: 5px; }
             .oui-style { font-size: 2.4rem; }
             .action-buttons { flex-direction: column; align-items: center; gap: 10px; }
             .btn-outline { width: 100%; }
             .hebrew-divider { max-width: 320px; }
-            .bsd-style { padding-right: 4%; } /* Ajustement léger pour mobile */
         }
     </style>
 </head>
@@ -248,7 +238,7 @@
 
 <header>
     <img src="logo4.png" alt="E&Y" class="logo-main">
-    <h1 style="font-family: 'Pinyon Script', cursive; font-size: 3rem; color: var(--text-dark);">Eden & Yaacov</h1>
+    <h1 style="font-family: 'Pinyon Script', cursive; font-size: 3rem; color: var(--text-dark);" class="ampersand-center">Eden & Yaacov</h1>
 </header>
 
 <div class="container">
@@ -260,7 +250,7 @@
             <h2 style="font-weight: 300; font-size: 1.8rem;">La Mairie</h2>
             <p style="font-size: 1rem; margin-bottom: 5px; opacity: 0.8;">Place d'Armand Carrel, 75019 Paris</p>
 
-            <span class="couple-names-style">Eden & Yaacov</span>
+            <span class="couple-names-style ampersand-center">Eden & Yaacov</span>
             <span class="mairie-oui">se diront<br><span class="oui-style">« Oui »</span></span>
 
             <span class="highlight">Le Mercredi 17 Juin 2026</span>
@@ -297,7 +287,12 @@
             </div>
 
             <p style="font-style: italic; font-size: 1.1rem;">ont la joie de vous faire part du mariage de leurs enfants</p>
-            <span class="couple-names-style">Eden & Yaacov</span>
+            <span class="couple-names-style ampersand-center">Eden & Yaacov</span>
+
+            <span class="couple-names-style ampersand-center" style="margin-top: -10px;">
+                עדן <span style="margin-left: 10px; margin-right: 5px;">&</span> יעקבי
+            </span>
+
             <p style="font-style: italic; font-size: 1.1rem;">et seront honorés de votre présence</p>
 
             <span class="highlight">Le Mardi 23 Juin 2026</span>
@@ -318,7 +313,7 @@
                         Raphaël Levy
                     </div>
                     <div style="text-align: right;">
-                        <strong>Borkana et Eliahou</strong><br>
+                        <strong>Borkana et Eliahou Trabelsi</strong><br>
                         Khamous et Zoraya Haddad
                     </div>
                 </div>
