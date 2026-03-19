@@ -154,6 +154,18 @@
             display: block;
         }
 
+        /* Nouveau style pour le בס"ד */
+        .bsd-style {
+            font-family: serif; /* Police simple pour le בס"ד */
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            text-align: right;
+            padding-right: 4%; /* Alignement avec le bord de l'image en dessous */
+            margin-bottom: -10px; /* Rapproche du diviseur */
+            display: block;
+        }
+
         .colored-filter {
             filter: drop-shadow(0 0 0 var(--primary)) drop-shadow(0 0 0 var(--primary)) drop-shadow(0 0 0 var(--primary));
             opacity: 0.9;
@@ -226,6 +238,7 @@
             .action-buttons { flex-direction: column; align-items: center; gap: 10px; }
             .btn-outline { width: 100%; }
             .hebrew-divider { max-width: 320px; }
+            .bsd-style { padding-right: 4%; } /* Ajustement léger pour mobile */
         }
     </style>
 </head>
@@ -265,6 +278,8 @@
 
     <div class="wedding-card reveal">
         <img src="houppa7.png" alt="Houppa" class="card-img">
+
+        <span class="bsd-style">בס"ד</span>
         <img src="hebreu.png" alt="בסימן טוב" class="hebrew-divider colored-filter">
 
         <div class="card-content">
