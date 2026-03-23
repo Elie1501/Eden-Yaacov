@@ -89,7 +89,7 @@
             font-weight: 600;
             font-size: 1.5rem;
             display: block;
-            margin: 15px 0;
+            margin: 10px 0; /* Ajusté pour l'équilibre entre les deux dates */
         }
 
         .couple-names-style {
@@ -254,7 +254,7 @@
             <span class="mairie-oui">se diront<br><span class="oui-style">« Oui »</span></span>
 
             <span class="highlight">Le Mercredi 17 Juin 2026</span>
-            <p style="font-size: 1.1rem; letter-spacing: 1px;">Cérémonie à <strong>13h30</strong></p>
+            <p style="font-size: 1.1rem; letter-spacing: 1px;">Cérémonie à <strong>14h pile</strong></p>
 
             <div class="action-buttons">
                 <a href="https://waze.com/ul?q=Mairie+du+19eme+Paris" class="btn-outline" target="_blank" rel="noopener">Waze</a>
@@ -278,11 +278,13 @@
 
             <div class="family-grid">
                 <div style="font-style: italic;">
-                    M. et Mme Freddy Elharrar<br>
-                    Marcel Levy
+                    M. et Mme Haim Trabelsi
+
                 </div>
                 <div style="text-align: right; font-style: italic;">
-                    M. et Mme Haim Trabelsi
+                    Marcel Levy <br>
+                    M. et Mme Freddy Elharrar
+
                 </div>
             </div>
 
@@ -295,10 +297,16 @@
 
             <p style="font-style: italic; font-size: 1.1rem;">et seront honorés de votre présence</p>
 
-            <span class="highlight">Le Mardi 23 Juin 2026</span>
-            <p style="font-size: 1.1rem;"><strong>Factory 58</strong><br>
+            <span class="highlight" style="margin-bottom: 0;">Le Mardi 23 Juin 2026</span>
+            <span class="highlight" style="margin-top: 5px;">Le 8 Tamouz 5786</span>
+
+            <p style="font-size: 1.1rem;"><strong> Au Factory 58</strong><br>
                 12 Rue Gutenberg, 93000 Bobigny<br>
-                Accueil à <strong>18h00</strong></p>
+                Accueil à <strong>17h30</strong></p>
+
+            <p style="font-style: italic; margin-top: 15px; font-size: 1.2rem; color: var(--primary); font-weight: 600;">
+                La Houppa sera suivie de la soirée et du henné
+            </p>
 
             <div class="action-buttons">
                 <a href="https://waze.com/ul?q=Factory+58+Bobigny" class="btn-outline" target="_blank" rel="noopener">Waze</a>
@@ -309,12 +317,12 @@
                 <p style="font-style: italic; margin-bottom: 15px; color: var(--primary);">À la mémoire de nos chers disparus</p>
                 <div class="family-grid" style="font-size: 0.85rem; line-height: 1.4;">
                     <div>
-                        <strong>David et Eliane Elharrar</strong><br>
-                        Raphaël Levy
+                        <strong>David et Eliane Elharrar ז׳׳ל</strong><br>
+                        Raphaël Levy ז׳׳ל
                     </div>
                     <div style="text-align: right;">
-                        <strong>Borkana et Eliahou Trabelsi</strong><br>
-                        Khamous et Zoraya Haddad
+                        <strong>Borkana et Eliahou Trabelsi ז׳׳ל</strong><br>
+                        Khamous et Zoraya Haddad ז׳׳ל
                     </div>
                 </div>
             </div>
@@ -424,7 +432,7 @@
         if(type === 'mairie') {
             event = { title: "Mariage Eden & Yaacov - Mairie", start: "20260617T133000", end: "20260617T150000", location: "Mairie du 19ème, Paris" };
         } else {
-            event = { title: "Mariage Eden & Yaacov - Houppa", start: "20260623T180000", end: "20260624T040000", location: "Factory 58, Bobigny" };
+            event = { title: "Mariage Eden & Yaacov - Houppa & Soirée", start: "20260623T173000", end: "20260624T040000", location: "Factory 58, 12 Rue Gutenberg, 93000 Bobigny" };
         }
         const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}`;
         window.open(url, '_blank', 'noopener');
