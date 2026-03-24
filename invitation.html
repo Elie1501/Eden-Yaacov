@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mariage Eden & Yaacov | 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --rose-accent: #8E4A5B; 
+            --rose-light: #E8D5DA; 
+            --rose-ultra-light: #fffafa;
+            --text-dark: #3a3a3a;
+            --card-bg: rgba(255, 255, 255, 0.98);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background: #fdf6f8 url('fond_aquarelle.png') fixed center/cover;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- EFFET DE FLEURS FIXES LUXE --- */
+        .side-flowers {
+            position: fixed;
+            top: 0; width: 110px; height: 100vh;
+            background-repeat: repeat-y;
+            background-size: contain;
+            z-index: 100; /* Toujours au dessus */
+            pointer-events: none;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+        }
+        .side-left { left: -10px; background-image: url('feuille-gauche1.png'); }
+        .side-right { right: -10px; background-image: url('feuille-droite1.png'); }
+
+        /* --- PARTICULES MAGIQUES --- */
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid var(--rose-light);
+            padding: 15px 0; display: flex; justify-content: center; gap: 20px;
+            backdrop-filter: blur(10px);
+        }
+        nav a {
+            text-decoration: none; color: var(--rose-accent);
+            font-family: 'Montserrat', sans-serif; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
+        }
+
+        .main-wrapper {
+            max-width: 600px; margin: 0 auto;
+            padding: 40px 55px 120px; /* Marges énormes pour les fleurs */
+            position: relative; z-index: 20;
+        }
+
+        .card {
+            background: var(--card-bg); border: 1px solid var(--rose-light);
+            padding: 50px 20px; text-align: center; border-radius: 4px;
+            box-shadow: 0 15px 50px rgba(142, 74, 91, 0.1);
+            margin-bottom: 80px; position: relative;
+        }
+        .card::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid var(--rose-light); opacity: 0.3; pointer-events: none;
+        }
+
+        /* --- TYPOGRAPHIES --- */
+        h3 { font-family: 'Cinzel', serif; color: var(--rose-accent); letter-spacing: 5px; font-size: 1.2rem; margin-bottom: 20px; }
+        
+        .couple-names { 
+            font-family: 'Great Vibes', cursive; 
+            color: var(--rose-accent); 
+            font-size: 3.8rem; 
+            line-height: 1; 
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow { from { text-shadow: 0 0 5px #fff; } to { text-shadow: 0 0 15px var(--rose-light); } }
+
+        .date-main { font-family: 'Cinzel', serif; font-weight: 700; color: var(--rose-accent); font-size: 1.2rem; }
+        .divider { width: 60px; height: 1px; background: var(--rose-accent); margin: 30px auto; opacity: 0.6; }
+
+        .tsniout-tag {
+            background: var(--rose-ultra-light);
+            border: 1px solid var(--rose-light);
+            padding: 12px; margin: 25px auto 0;
+            font-style: italic; font-size: 0.85rem;
+            color: var(--rose-accent);
+            max-width: 90%;
+            border-radius: 2px;
+        }
+
+        /* --- COUNTDOWN DESIGN --- */
+        .countdown-wrapper {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+            margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--rose-light);
+        }
+        .number { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--rose-accent); font-weight: 700; }
+        .label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+
+        /* --- SECTIONS --- */
+        .parents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; font-size: 0.85rem; line-height: 1.5; color: var(--text-dark); }
+        
+        .memoire-section { margin-top: 40px; border-top: 1px double var(--rose-light); padding-top: 25px; }
+        .memoire-title { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--rose-accent); letter-spacing: 2px; margin-bottom: 15px; }
+        .memoire-grid { display: grid; grid-template-columns: 1fr 1fr; font-size: 0.8rem; line-height: 1.5; font-style: italic; opacity: 0.9; }
+
+        .btn-waze {
+            display: inline-block; margin-top: 25px; padding: 14px 30px;
+            background: white; border: 1px solid var(--rose-accent); color: var(--rose-accent);
+            text-decoration: none; border-radius: 40px; font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif; letter-spacing: 3px; font-weight: 600;
+            transition: 0.4s ease;
+        }
+        .btn-waze:active { background: var(--rose-accent); color: white; }
+
+        /* --- MUSIQUE --- */
+        .music-btn {
+            position: fixed; bottom: 35px; right: 30px; z-index: 2000;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--rose-accent); color: white; border: 2px solid white;
+            box-shadow: 0 10px 25px rgba(142, 74, 91, 0.4); opacity: 0; transition: 1.5s;
+        }
+        .music-btn.visible { opacity: 1; }
+
+        /* --- REVEAL ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(40px) scale(0.98); transition: all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+        @media (max-width: 480px) {
+            .main-wrapper { padding: 40px 60px 100px; }
+            .couple-names { font-size: 3.2rem; }
+            .side-flowers { width: 100px; }
+            .side-left { left: -15px; }
+            .side-right { right: -15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="side-flowers side-left"></div>
+    <div class="side-flowers side-right"></div>
+    <canvas id="particles"></canvas>
+
+    <audio id="bg-music" loop preload="auto"><source src="musique.mp3" type="audio/mpeg"></audio>
+    <button id="music-toggle" class="music-btn" onclick="toggleMusic(event)"><i class="fa-solid fa-play"></i></button>
+
+    <nav>
+        <a href="#mairie">Mairie</a>
+        <a href="#houppa">Houppa</a>
+        <a href="#confirmation">RSVP</a>
+    </nav>
+
+    <div class="main-wrapper">
+
+        <div id="mairie" class="card reveal active">
+            <img src="logo4.png" alt="Eden & Yaacov" style="width: 140px; margin-bottom: 25px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.05));">
+            <h3>Cérémonie Civile</h3>
+            <div class="couple-names">Eden & Yaacov</div>
+            <div class="divider"></div>
+            <div class="date-main">Mercredi 17 Juin 2026</div>
+            <p style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 3px; margin-top: 8px; font-weight: 600;">À 14H00 Précise</p>
+            
+            <div style="margin-top: 30px;">
+                <p style="font-family: 'Cinzel'; font-weight: 700; color: var(--rose-accent); font-size: 0.9rem;">MAIRIE DU 19ème PARIS</p>
+                <p style="font-size: 1rem; margin-top: 5px;">Place d'Armand Carrel, 75019 Paris</p>
+            </div>
+
+            <a href="https://waze.com/ul?q=Mairie+du+19eme+Paris" target="_blank" class="btn-waze">S'y rendre (Waze)</a>
+
+            <div class="tsniout-tag">
+                "Une tenue Tsniout réjouira les mariés"
+            </div>
+        </div>
+
+        <div id="houppa" class="card reveal">
+            <img src="hebreu.png" alt="בסימן טוב" style="width: 100%; margin-bottom: 20px; opacity: 0.9;">
+            <img src="houppa7.png" alt="Cérémonie" style="width: 100%; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 25px;">
+            <h3>Houppa & Soirée</h3>
+
+            <div class="parents-grid">
+                <div style="text-align: left; font-style: italic;">M. et Mme<br>Haim Trabelsi</div>
+                <div style="text-align: right; font-style: italic;">Marcel Levy<br>M. et Mme Freddy Elharrar</div>
+            </div>
+
+            <p style="font-size: 1rem; color: var(--text-dark);">Ont la joie de vous faire part du mariage de leurs enfants</p>
+            <div class="couple-names">Eden & Yaacov</div>
+            <div class="couple-names" style="font-size: 2.5rem; margin-top: -15px;">עדן & יעקבי</div>
+            
+            <p style="font-size: 1rem; margin-top: 10px;">Et seront honorés de votre présence</p>
+            <div class="divider"></div>
+            
+            <div class="date-main">Mardi 23 Juin 2026</div>
+            <p style="font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 4px; margin-top: 5px; color: var(--rose-accent);">8 TAMOUZ 5786</p>
+            <p style="font-size: 1.1rem; text-transform: uppercase; margin-top: 15px; font-weight: 600;">Accueil à 17H30</p>
+
+            <div style="margin-top: 30px;">
+                <p style="font-family: 'Cinzel'; font-weight: 700; color: var(--rose-accent); font-size: 0.95rem;">AU FACTORY 58</p>
+                <p style="font-size: 1rem; margin-top: 5px;">12 Rue Gutenberg, 93000 Bobigny</p>
+            </div>
+
+            <p style="margin-top: 25px; color: var(--rose-accent); font-weight: 700; font-size: 1.1rem; line-height: 1.3;">
+                La Houppa sera suivie de la soirée<br>et du henné
+            </p>
+
+            <a href="https://waze.com/ul?q=Factory+58+Bobigny" target="_blank" class="btn-waze">S'y rendre (Waze)</a>
+
+            <div class="tsniout-tag">
+                "Une tenue Tsniout réjouira les mariés"
+            </div>
+
+            <div class="memoire-section">
+                <p class="memoire-title">À la mémoire de nos chers disparus</p>
+                <div class="memoire-grid">
+                    <div style="text-align: left; border-right: 1px solid var(--rose-light); padding-right: 10px;">
+                        <strong>David et Eliane Elharrar ז׳׳ל</strong><br>Raphaël Levy ז׳׳ל
+                    </div>
+                    <div style="text-align: right; padding-left: 10px;">
+                        <strong>Borkana et Eliahou Trabelsi ז׳׳ל</strong><br>Khamous et Zoraya Haddad ז׳׳ל
+                    </div>
+                </div>
+            </div>
+
+            <div class="countdown-wrapper">
+                <div class="countdown-item"><span class="number" id="days">00</span><span class="label">Jours</span></div>
+                <div class="countdown-item"><span class="number" id="hours">00</span><span class="label">Hrs</span></div>
+                <div class="countdown-item"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
+                <div class="countdown-item"><span class="number" id="seconds">00</span><span class="label">Sec</span></div>
+            </div>
+        </div>
+
+        <div id="confirmation" class="card reveal">
+            <h3>Confirmations</h3>
+            <p style="font-style: italic; font-size: 0.9rem; margin-bottom: 30px; opacity: 0.8;">Merci de répondre avant le 15 Mai 2026</p>
+            
+            <form id="rsvpForm" action="https://formspree.io/f/mqaevepk" method="POST" style="text-align: left;">
+                <label style="font-size: 0.75rem; color: var(--rose-accent); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Nom & Prénom</label>
+                <input type="text" name="nom" placeholder="Ex: Famille Cohen" required style="width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--rose-light); background: transparent; margin-bottom: 25px; outline: none; font-size: 1.1rem; color: var(--text-dark);">
+                
+                <label style="font-size: 0.75rem; color: var(--rose-accent); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Présence</label>
+                <select name="presence" id="presenceSelect" style="width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--rose-light); background: transparent; margin-bottom: 25px; outline: none; font-size: 1rem; color: var(--text-dark);">
+                    <option value="oui">OUI, avec grand plaisir</option>
+                    <option value="non">NON, avec regret</option>
+                </select>
+
+                <div id="guestGroup">
+                    <label style="font-size: 0.75rem; color: var(--rose-accent); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Nombre d'adultes</label>
+                    <select name="adultes" style="width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--rose-light); background: transparent; margin-bottom: 25px; outline: none; font-size: 1rem;">
+                        <option value="1">1 Personne</option><option value="2">2 Personnes</option><option value="3">3 Personnes</option><option value="4">4 Personnes</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submitBtn" style="width: 100%; background: var(--rose-accent); color: white; border: none; padding: 20px; text-transform: uppercase; letter-spacing: 3px; font-family: 'Cinzel'; font-weight: 700; cursor: pointer; border-radius: 4px; transition: 0.4s;">Envoyer ma réponse</button>
+            </form>
+            <div id="formFeedback" style="display: none; padding: 30px; font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--rose-accent);">
+                Merci ! Votre réponse a bien été envoyée.
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 50px 0; font-family: 'Cinzel', serif; font-size: 0.7rem; color: var(--rose-accent); letter-spacing: 3px; opacity: 0.8;">
+        EDEN & YAACOV • 23 JUIN 2026
+    </footer>
+
+    <script>
+        // --- ANIMATIONS REVEAL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- GESTION MUSIQUE ---
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle');
+        let isPlaying = false;
+        window.addEventListener('scroll', () => { if(window.scrollY > 150) musicBtn.classList.add('visible'); });
+        function toggleMusic(e) {
+            e.stopPropagation();
+            if (isPlaying) { audio.pause(); musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>'; }
+            else { audio.play().catch(e => console.log("Lancer manuellement")); musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'; }
+            isPlaying = !isPlaying;
+        }
+
+        // --- COUNTDOWN LOGIC ---
+        const targetDate = new Date("Jun 23, 2026 18:00:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff <= 0) return;
+            document.getElementById("days").innerText = Math.floor(diff / (1000*60*60*24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((diff % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((diff % (1000*60*60)) / (1000*60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((diff % (1000*60)) / 1000).toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000); updateCountdown();
+
+        // --- SYSTÈME PARTICULES ---
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+        let parts = [];
+        class P {
+            constructor() { this.x = Math.random()*w; this.y = Math.random()*h; this.s = Math.random()*2; this.vy = Math.random()*0.4+0.1; this.o = Math.random()*0.5; }
+            up() { this.y -= this.vy; if(this.y < 0) this.y = h; }
+            draw() { ctx.globalAlpha = this.o; ctx.fillStyle = '#AD5D78'; ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI*2); ctx.fill(); }
+        }
+        function init() { for(let i=0; i<45; i++) parts.push(new P()); }
+        function loop() { ctx.clearRect(0,0,w,h); parts.forEach(p=>{p.up(); p.draw();}); requestAnimationFrame(loop); }
+        init(); loop();
+
+        // --- FORMULAIRE ---
+        const form = document.getElementById('rsvpForm');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = "Envoi..."; btn.disabled = true;
+            const data = new FormData(form);
+            const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+            if (response.ok) { form.style.display = 'none'; document.getElementById('formFeedback').style.display = 'block'; }
+            else { alert("Erreur, réessayez."); btn.innerHTML = "Réessayer"; btn.disabled = false; }
+        });
+        document.getElementById('presenceSelect').addEventListener('change', function() {
+            document.getElementById('guestGroup').style.display = (this.value === 'non') ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
