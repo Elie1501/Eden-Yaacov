@@ -67,7 +67,6 @@
         h3 { font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 15px; color: var(--rose-accent); }
         .couple-names { font-family: var(--font-script); font-size: 3.2rem; margin: 10px 0; line-height: 1.1; color: var(--rose-accent); }
         
-        /* STYLE AGRANDI MAIRIE */
         .mairie-oui { font-size: 1.4rem; font-style: italic; margin-top: -5px; margin-bottom: 20px; color: var(--rose-accent); }
 
         .date-main { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 2px; color: var(--rose-accent); }
@@ -78,6 +77,8 @@
         .parent-right { text-align: right; }
 
         .btn-waze { display: inline-block; margin-top: 20px; color: var(--rose-accent); border: 1px solid var(--rose-accent); padding: 12px 24px; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 25px; transition: 0.3s; }
+        .btn-waze:hover { background: var(--rose-accent); color: white; }
+
         .tsniout-box { background: #fffafa; padding: 15px; margin-top: 25px; border: 1px solid var(--rose-light); font-style: italic; font-size: 0.85rem; color: var(--rose-accent); }
 
         /* Formulaire */
@@ -177,7 +178,8 @@
             <div class="card-content">
                 <h3>Confirmations</h3>
                 <p style="font-style: italic; margin-bottom: 25px;">Merci de confirmer avant le 15 Mai 2026</p>
-                <form id="rsvpForm" action="https://formspree.io/f/mqaevepk" method="POST">
+                
+                <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbxN7fNCZbyIpHVPWUYf3Nh675i65we521EUS7ecZBKOHykonIZjax010RzCPCp6_GVN3w/exec" method="POST">
                     
                     <label class="form-label">Nom & Prénom *</label>
                     <input type="text" name="nom_complet" required placeholder="Ex: Famille Levy">
@@ -223,11 +225,13 @@
     <footer style="text-align: center; padding: 40px 0; font-family: var(--font-serif); font-size: 0.75rem; color: var(--rose-accent); letter-spacing: 2px; text-transform: uppercase;">&copy; 2026 Eden & Yaacov</footer>
 
     <script>
+        // Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Musique
         const audio = document.getElementById("bg-music");
         const musicBtn = document.getElementById("music-toggle");
         let isPlaying = false;
@@ -255,6 +259,7 @@
         }
         musicBtn.addEventListener('click', toggleMusic);
 
+        // Champs dynamiques
         document.getElementById('mairieSelect').addEventListener('change', function() {
             document.getElementById('mairieDetails').style.display = (this.value === 'oui') ? 'block' : 'none';
         });
@@ -262,15 +267,33 @@
             document.getElementById('houppaDetails').style.display = (this.value === 'oui') ? 'block' : 'none';
         });
 
+        // Envoi vers Google Sheet
         const form = document.getElementById('rsvpForm');
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.disabled = true; btn.innerHTML = "Envoi...";
+            
             const data = new FormData(form);
-            const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-            if (response.ok) { form.style.display = 'none'; document.getElementById('formFeedback').style.display = 'block'; }
-            else { alert("Erreur."); btn.disabled = false; btn.innerHTML = "Réessayer"; }
+            
+            try {
+                // Utilisation de mode: 'no-cors' pour éviter les erreurs de redirection Google Script
+                await fetch(form.action, { 
+                    method: 'POST', 
+                    body: data,
+                    mode: 'no-cors'
+                });
+
+                // Puisque 'no-cors' ne permet pas de lire la réponse, on passe directement au succès
+                form.style.display = 'none'; 
+                document.getElementById('formFeedback').style.display = 'block';
+                
+            } catch (error) {
+                console.error("Erreur:", error);
+                alert("Un problème est survenu. Merci de réessayer.");
+                btn.disabled = false; 
+                btn.innerHTML = "Réessayer";
+            }
         });
     </script>
 </body>
