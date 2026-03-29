@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mariage de Eden & Yaacov</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #fdf6f8; 
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --rose-accent: #8E4A5B; 
+            --rose-light: #E8D5DA; 
+            --text-dark: #664A53; 
+            --font-script: 'Great Vibes', cursive;
+            --font-serif: 'Cinzel', serif;
+            --font-main: 'Cormorant Garamond', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            margin: 0; padding: 0; width: 100%;
+            font-family: var(--font-main); color: var(--text-dark);
+            line-height: 1.7; overflow-x: hidden;
+            background: url('fond_aquarelle.png') fixed center/cover;
+        }
+
+        .side-flowers {
+            position: fixed; top: 0; width: 120px; height: 100vh;
+            background-repeat: repeat-y; background-size: contain;
+            z-index: 10; opacity: 0.9; pointer-events: none;
+        }
+        .side-left { left: 0; background-image: url('feuille-gauche1.png'); }
+        .side-right { right: 0; background-image: url('feuille-droite1.png'); }
+
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 40px 20px 100px; }
+            .side-flowers { width: 60px; }
+            .couple-names { font-size: 2.6rem; }
+        }
+
+        nav {
+            position: sticky; top: 0; width: 100%; z-index: 1000;
+            background: rgba(253, 246, 248, 0.98); border-bottom: 1px solid var(--rose-light);
+            padding: 18px 0; display: flex; justify-content: center; gap: 20px;
+        }
+        nav a { text-decoration: none; color: var(--rose-accent); font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; }
+
+        .main-wrapper { max-width: 600px; margin: 0 auto; padding: 40px 15px 120px; display: flex; flex-direction: column; gap: 60px; position: relative; z-index: 20; }
+
+        .card {
+            position: relative; padding: 60px 30px; background-color: var(--card-bg);
+            border: 1px solid var(--rose-light); box-shadow: 0 15px 45px rgba(173, 93, 120, 0.08);
+            text-align: center; overflow: hidden; border-radius: 4px;
+        }
+        .card::after { content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid var(--rose-light); pointer-events: none; z-index: 3; opacity: 0.7; }
+        
+        .bsd { position: absolute; top: 15px; right: 20px; font-family: var(--font-serif); font-size: 0.7rem; color: var(--rose-accent); opacity: 0.7; z-index: 10; }
+
+        h3 { font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 15px; color: var(--rose-accent); }
+        .couple-names { font-family: var(--font-script); font-size: 3.2rem; margin: 10px 0; line-height: 1.1; color: var(--rose-accent); }
+        
+        /* STYLE AGRANDI MAIRIE */
+        .mairie-oui { font-size: 1.4rem; font-style: italic; margin-top: -5px; margin-bottom: 20px; color: var(--rose-accent); }
+
+        .date-main { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 2px; color: var(--rose-accent); }
+        .divider { width: 60px; height: 1px; background-color: var(--rose-light); margin: 25px auto; }
+
+        .parents-container { display: flex; justify-content: space-between; align-items: flex-start; margin: 30px 0; padding-bottom: 25px; border-bottom: 1px solid var(--rose-light); }
+        .parent-block { font-family: var(--font-serif); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; color: var(--rose-accent); flex: 1; text-align: left; }
+        .parent-right { text-align: right; }
+
+        .btn-waze { display: inline-block; margin-top: 20px; color: var(--rose-accent); border: 1px solid var(--rose-accent); padding: 12px 24px; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 25px; transition: 0.3s; }
+        .tsniout-box { background: #fffafa; padding: 15px; margin-top: 25px; border: 1px solid var(--rose-light); font-style: italic; font-size: 0.85rem; color: var(--rose-accent); }
+
+        /* Formulaire */
+        form { display: flex; flex-direction: column; gap: 20px; text-align: left; margin-top: 20px; }
+        .form-label { font-family: var(--font-serif); font-size: 0.75rem; color: var(--rose-accent); text-transform: uppercase; font-weight: 600; margin-top: 10px; }
+        input, select, textarea { width: 100%; padding: 12px 5px; border: none; border-bottom: 1px solid var(--rose-light); background: transparent; font-family: inherit; font-size: 1.1rem; outline: none; }
+        .btn-submit { background-color: var(--rose-accent); color: #fff; border: none; padding: 18px; width: 100%; font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 3px; cursor: pointer; border-radius: 4px; margin-top: 20px; }
+
+        .sub-group { padding-left: 15px; border-left: 1px solid var(--rose-light); margin-top: 10px; display: none; }
+
+        .music-btn { position: fixed; bottom: 30px; right: 20px; z-index: 2000; width: 55px; height: 55px; border-radius: 50%; background: var(--rose-accent); color: white; border: 2px solid white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.5s; }
+
+        .hodo-text { font-family: var(--font-serif); font-size: 1.1rem; color: var(--rose-accent); margin-bottom: 15px; font-weight: 600; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div class="side-flowers side-left"></div>
+    <div class="side-flowers side-right"></div>
+
+    <audio id="bg-music" loop><source src="musique3.mp3" type="audio/mpeg"></audio>
+    <button id="music-toggle" class="music-btn"><i class="fa-solid fa-play"></i></button>
+
+    <nav>
+        <a href="#mairie">Mairie</a>
+        <a href="#houppa">Houppa</a>
+        <a href="#confirmation">RSVP</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <div id="mairie" class="card reveal active">
+            <span class="bsd">בס"ד</span>
+            <div class="card-content">
+                <div class="hodo-text">הוֹדוּ לַה' כִּי־טוֹב כִּי לְעוֹלָם חַסְדּוֹ</div>
+                <img src="logo4.png" alt="Logo" style="width:130px; margin-bottom:20px;">
+                <h3>Cérémonie Civile</h3>
+                <div class="couple-names">Eden & Yaacov</div>
+                <p class="mairie-oui">Se diront oui le</p>
+                <div class="divider"></div>
+                <div class="date-main">Mercredi 17 Juin 2026</div>
+                <p style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">À 14H00 précise</p>
+                <div style="margin-top: 25px;">
+                    <p style="font-weight: 600; text-transform: uppercase; font-size: 0.85rem; color: var(--rose-accent);">Mairie du 19ème Paris</p>
+                    <p>Place d'Armand Carrel, 75019 Paris</p>
+                </div>
+                <a href="https://waze.com/ul?q=Mairie+du+19eme+Paris" target="_blank" class="btn-waze">Itinéraire</a>
+                <div class="tsniout-box">"Une tenue Tsniout réjouira les mariés"</div>
+            </div>
+        </div>
+
+        <div id="houppa" class="card reveal">
+            <span class="bsd">בס"ד</span>
+            <div class="card-content">
+                <img src="hebreu.png" alt="Mazal Tov" style="width:100%; margin-bottom:15px; opacity:0.8;">
+                <img src="houppa7.png" alt="Houppa" style="width:100%; margin-bottom:20px; border-radius:2px;">
+                <h3>Houppa & Soirée</h3>
+                <div class="parents-container">
+                    <div class="parent-block">M. et Mme<br>Haim Trabelsi</div>
+                    <div class="parent-block parent-right">M. et Mme Freddy Elharrar<br>Marcel Levy</div>
+                </div>
+                
+                <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 10px;">Ont la joie de vous faire part du mariage de leurs enfants</p>
+                <div class="couple-names">Eden & Yaacov</div>
+                <div class="couple-names" style="font-size: 2.2rem; margin-top: -15px;">עדן & יעקב</div>
+                
+                <div class="divider"></div>
+                
+                <div class="date-main">Mardi 23 Juin 2026</div>
+                <p style="font-size: 0.85rem; letter-spacing: 3px; color: var(--rose-accent); font-weight: bold;">LE 8 TAMOUZ 5786</p>
+                <p style="font-size: 1rem; text-transform: uppercase; margin-top: 5px;">Accueil à 17H30</p>
+                
+                <div style="margin-top: 25px;">
+                    <p style="font-weight: 600; text-transform: uppercase; color: var(--rose-accent);">Au Factory 58</p>
+                    <p>12 Rue Gutenberg, 93000 Bobigny</p>
+                </div>
+                
+                <p style="margin-top: 20px; color: var(--rose-accent); font-weight: 600; font-size: 1rem; line-height: 1.4;">
+                    La Houppa sera suivie de la soirée et du henné
+                </p>
+                
+                <a href="https://waze.com/ul?q=Factory+58+Bobigny" target="_blank" class="btn-waze">Itinéraire</a>
+                
+                <div class="tsniout-box">"Une tenue Tsniout réjouira les mariés"</div>
+
+                <div style="margin-top: 40px; border-top: 1px solid var(--rose-light); padding-top: 20px;">
+                    <p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--rose-accent);">À la mémoire de nos chers disparus</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-style: italic;">
+                        <div style="text-align:left;">David et Eliane Elharrar ז׳׳ל<br>Raphaël Levy ז׳׳ל</div>
+                        <div style="text-align:right;">Eliahou et Borkana Trabelsi ז׳׳ל<br>Khamous et Zoraya Haddad ז׳׳ל</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="confirmation" class="card reveal">
+            <span class="bsd">בס"ד</span>
+            <div class="card-content">
+                <h3>Confirmations</h3>
+                <p style="font-style: italic; margin-bottom: 25px;">Merci de confirmer avant le 15 Mai 2026</p>
+                <form id="rsvpForm" action="https://formspree.io/f/mqaevepk" method="POST">
+                    
+                    <label class="form-label">Nom & Prénom *</label>
+                    <input type="text" name="nom_complet" required placeholder="Ex: Famille Levy">
+
+                    <label class="form-label">Présent à la Mairie ? *</label>
+                    <select name="present_mairie" id="mairieSelect" required>
+                        <option value="">Choisir...</option>
+                        <option value="oui">Oui, nous serons présents</option>
+                        <option value="non">Non, nous ne pourrons pas être là</option>
+                    </select>
+
+                    <div id="mairieDetails" class="sub-group">
+                        <label class="form-label">Nombre d'adultes (Mairie)</label>
+                        <select name="adultes_mairie"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                        <label class="form-label">Nombre d'enfants (Mairie)</label>
+                        <select name="enfants_mairie"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+                    </div>
+
+                    <label class="form-label">Présent à la Houppa ? *</label>
+                    <select name="present_houppa" id="houppaSelect" required>
+                        <option value="">Choisir...</option>
+                        <option value="oui">Oui, nous serons présents</option>
+                        <option value="non">Non, nous ne pourrons pas être là</option>
+                    </select>
+
+                    <div id="houppaDetails" class="sub-group">
+                        <label class="form-label">Nombre d'adultes (Houppa)</label>
+                        <select name="adultes_houppa"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                        <label class="form-label">Nombre d'enfants (Houppa)</label>
+                        <select name="enfants_houppa"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+                    </div>
+
+                    <label class="form-label">Votre message de vœux</label>
+                    <textarea name="message" rows="3" placeholder="Laissez-nous un message..."></textarea>
+                    
+                    <button type="submit" id="submitBtn" class="btn-submit">ENVOYER MA RÉPONSE</button>
+                </form>
+                <div id="formFeedback" style="display: none; padding: 30px; font-family: var(--font-script); font-size: 2.2rem; color: var(--rose-accent);">Merci !</div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 0; font-family: var(--font-serif); font-size: 0.75rem; color: var(--rose-accent); letter-spacing: 2px; text-transform: uppercase;">&copy; 2026 Eden & Yaacov</footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const audio = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("music-toggle");
+        let isPlaying = false;
+
+        function playMusic() {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                }).catch(e => console.log("Audio bloqué"));
+                window.removeEventListener('scroll', playMusic);
+                window.removeEventListener('touchmove', playMusic);
+                window.removeEventListener('touchstart', playMusic);
+            }
+        }
+        window.addEventListener('scroll', playMusic);
+        window.addEventListener('touchmove', playMusic);
+        window.addEventListener('touchstart', playMusic);
+
+        function toggleMusic(e) {
+            e.stopPropagation();
+            if (isPlaying) { audio.pause(); musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>'; }
+            else { audio.play(); musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'; }
+            isPlaying = !isPlaying;
+        }
+        musicBtn.addEventListener('click', toggleMusic);
+
+        document.getElementById('mairieSelect').addEventListener('change', function() {
+            document.getElementById('mairieDetails').style.display = (this.value === 'oui') ? 'block' : 'none';
+        });
+        document.getElementById('houppaSelect').addEventListener('change', function() {
+            document.getElementById('houppaDetails').style.display = (this.value === 'oui') ? 'block' : 'none';
+        });
+
+        const form = document.getElementById('rsvpForm');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true; btn.innerHTML = "Envoi...";
+            const data = new FormData(form);
+            const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+            if (response.ok) { form.style.display = 'none'; document.getElementById('formFeedback').style.display = 'block'; }
+            else { alert("Erreur."); btn.disabled = false; btn.innerHTML = "Réessayer"; }
+        });
+    </script>
+</body>
+</html>
